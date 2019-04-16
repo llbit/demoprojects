@@ -1,4 +1,4 @@
-package demo;
+package balls;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -14,7 +14,6 @@ import javafx.util.Duration;
 // Starting point for factory/builder demo.
 public class Balls extends Application {
   private static final int FRAME_DURATION = 33;
-  private Stage stage;
   private Timeline timeline = new Timeline();
 
   public static void main(String[] args) {
@@ -22,7 +21,6 @@ public class Balls extends Application {
   }
 
   @Override public void start(Stage stage) {
-    this.stage = stage;
     stage.setTitle("Balls");
     Pane canvas = new Pane();
     canvas.setPrefHeight(600);
@@ -53,7 +51,7 @@ public class Balls extends Application {
         timeline.stop();
         timeline.getKeyFrames().clear();
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(FRAME_DURATION),
-            new BounceAnimation(canvas, circle, FRAME_DURATION)));
+            new RealisticBounceAnimation(canvas, circle, FRAME_DURATION)));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
       }
